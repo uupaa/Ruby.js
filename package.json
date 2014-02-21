@@ -1,0 +1,35 @@
+{
+  "name":           "uupaa.ruby.js",
+  "version":        "0.0.1",
+  "description":    "",
+  "url":            "https://github.com/uupaa/Ruby.js",
+  "keywords":       ["Ruby", "String", "Array", "Number", "util", "uupaa"],
+  "repository": {
+    "type":         "git",
+    "url":          "https://github.com/uupaa/Ruby.js.git"
+  },
+  "scripts": {
+    "watch":        "node node_modules/uupaa.watch.js --verbose --action build ./lib/Ruby.js",
+    "build":        "node node_modules/uupaa.minify.js --keep --output ./lib/Ruby.min.js ./lib/Ruby.js",
+    "test":         "NODE_ENV=production NODE_PATH=lib node --harmony test/index.node.js; open test/index.html",
+    "lint":         "plato --title Ruby.js --jshint .jshintrc -d lint/plato lib/Ruby.js; open lint/plato/index.html",
+    "clean":        "rm -rf lint/plato/assets"
+  },
+  "dependencies": {
+    "uupaa.extend.js":  ""
+  },
+  "devDependencies": {
+    "uupaa.help.js":    "",
+    "uupaa.task.js":    "",
+    "uupaa.test.js":    "",
+    "uupaa.watch.js":   "",
+    "uupaa.extend.js":  "",
+    "uupaa.es.js":      "",
+    "uupaa.minify.js":  ""
+  },
+  "lib":            "./lib/",
+  "main":           "./index.js",
+  "author":         "uupaa <uupaa.js@gmail.com>",
+  "license":        "MIT",
+  "contributors":   []
+}
