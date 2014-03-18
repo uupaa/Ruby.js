@@ -1,1 +1,63 @@
-__report = {"summary":{"total":{"sloc":1140,"maintainability":65.52135559826391},"average":{"sloc":1140,"maintainability":"65.52"}},"reports":[{"info":{"file":"lib/Ruby.js","fileShort":"lib/Ruby.js","fileSafe":"lib_Ruby_js","link":"files/lib_Ruby_js/index.html"},"jshint":{"messages":1},"complexity":{"aggregate":{"line":27,"complexity":{"sloc":{"physical":1140,"logical":618},"cyclomatic":133,"halstead":{"operators":{"distinct":42,"total":1583,"identifiers":["__stripped__"]},"operands":{"distinct":368,"total":1843,"identifiers":["__stripped__"]},"length":3426,"vocabulary":410,"difficulty":105.17119565217392,"volume":29735.898820905662,"effort":3127360.032786717,"bugs":9.91196627363522,"time":173742.22404370652},"params":80}},"module":"lib/Ruby.js","maintainability":65.52135559826391}}]}
+__report = {
+  "reports": [
+    {
+      "info": {
+        "file": "lib/Ruby.js",
+        "fileShort": "lib/Ruby.js",
+        "fileSafe": "lib_Ruby_js",
+        "link": "files/lib_Ruby_js/index.html"
+      },
+      "jshint": {
+        "messages": 1
+      },
+      "complexity": {
+        "aggregate": {
+          "line": 27,
+          "complexity": {
+            "sloc": {
+              "physical": 1126,
+              "logical": 607
+            },
+            "cyclomatic": 134,
+            "halstead": {
+              "operators": {
+                "distinct": 42,
+                "total": 1546,
+                "identifiers": [
+                  "__stripped__"
+                ]
+              },
+              "operands": {
+                "distinct": 369,
+                "total": 1831,
+                "identifiers": [
+                  "__stripped__"
+                ]
+              },
+              "length": 3377,
+              "vocabulary": 411,
+              "difficulty": 104.20325203252031,
+              "volume": 29322.472709093043,
+              "effort": 3055497.013922321,
+              "bugs": 9.774157569697682,
+              "time": 169749.8341067956
+            },
+            "params": 74
+          }
+        },
+        "module": "lib/Ruby.js",
+        "maintainability": 64.87539219517832
+      }
+    }
+  ],
+  "summary": {
+    "total": {
+      "sloc": 1126,
+      "maintainability": 64.87539219517832
+    },
+    "average": {
+      "sloc": 1126,
+      "maintainability": "64.88"
+    }
+  }
+}

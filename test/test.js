@@ -54,16 +54,20 @@ new Test().add([
         testString_to_i,
         testString_tr,
         testString_tr_s,
-    ]).run() /*.worker(function(err, test) {
-        if (!err) {
-            var undo = Test.swap(Xxx, Xxx_);
+    ]).run(function(err, test) {
+        if (1) {
+            err || test.worker(function(err, test) {
+                if (!err && typeof Ruby_ !== "undefined") {
+                    var name = Test.swap(Ruby, Ruby_);
 
-            new Test(test).run(function(err, test) {
-                undo = Test.undo(undo);
+                    new Test(test).run(function(err, test) {
+                        Test.undo(name);
+                    });
+                }
             });
         }
     });
-    */
+
 
 function testSetup(next) {
     Ruby(2.0);

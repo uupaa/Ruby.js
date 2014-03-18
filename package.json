@@ -1,7 +1,7 @@
 {
   "name":           "uupaa.ruby.js",
-  "version":        "0.0.1",
-  "description":    "",
+  "version":        "0.0.2",
+  "description":    "Extend Ruby functions.",
   "url":            "https://github.com/uupaa/Ruby.js",
   "keywords":       ["Ruby", "String", "Array", "Number", "util", "uupaa"],
   "repository": {
@@ -9,22 +9,28 @@
     "url":          "https://github.com/uupaa/Ruby.js.git"
   },
   "scripts": {
-    "watch":        "node node_modules/uupaa.watch.js --verbose --action build ./lib/Ruby.js",
-    "build":        "node node_modules/uupaa.minify.js --keep --output ./lib/Ruby.min.js ./lib/Ruby.js",
+    "watch":        "node node_modules/uupaa.watch.js --verbose --action build",
+    "build":        "node node_modules/uupaa.minify.js --verbose --strict --keep --pretty",
+    "build-simple": "node node_modules/uupaa.minify.js --verbose --strict --keep --pretty --nowrap --simple",
+    "build-release":"node node_modules/uupaa.minify.js --verbose --strict --module",
     "test":         "NODE_ENV=production NODE_PATH=lib node --harmony test/index.node.js; open test/index.html",
-    "lint":         "plato --title Ruby.js --jshint .jshintrc -d lint/plato lib/Ruby.js; open lint/plato/index.html",
-    "clean":        "rm -rf lint/plato/assets"
+    "lint":         "node node_modules/uupaa.plato.js; open lint/plato/index.html"
+  },
+  "x-build": {
+    "inputs":       ["lib/Ruby.js"],
+    "output":       "lib/Ruby.min.js"
   },
   "dependencies": {
-    "uupaa.extend.js":  ""
+    "uupaa.extend.js":  "",
+    "uupaa.es.js":      ""
   },
   "devDependencies": {
+    "uupaa.valid.js":   "",
     "uupaa.help.js":    "",
     "uupaa.task.js":    "",
     "uupaa.test.js":    "",
     "uupaa.watch.js":   "",
-    "uupaa.extend.js":  "",
-    "uupaa.es.js":      "",
+    "uupaa.plato.js":   "",
     "uupaa.minify.js":  ""
   },
   "lib":            "./lib/",
