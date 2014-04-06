@@ -5,6 +5,7 @@
 onmessage = function(event) {
     var baseDir = event.data.baseDir;
 
+    importScripts(baseDir + "../node_modules/uupaa.console.js/lib/Console.js");
     importScripts(baseDir + "../node_modules/uupaa.valid.js/lib/Valid.js");
     importScripts(baseDir + "../node_modules/uupaa.help.js/lib/Help.js");
     importScripts(baseDir + "../node_modules/uupaa.task.js/lib/Task.js");
@@ -12,7 +13,7 @@ onmessage = function(event) {
     importScripts(baseDir + "../node_modules/uupaa.extend.js/lib/Extend.js");
     importScripts(baseDir + "../node_modules/uupaa.es.js/lib/ES.js");
     importScripts(baseDir + "../lib/Ruby.js");
-    importScripts(baseDir + "../lib/Ruby.min.js");
+    importScripts(baseDir + "../release/Ruby.min.js");
     importScripts(baseDir + "./test.js");
 
     self.postMessage({ error: self.errorMessage || "" });
@@ -26,7 +27,7 @@ onmessage = function(event) {
 <script src="../node_modules/uupaa.extend.js/lib/Extend.js"></script>
 <script src="../node_modules/uupaa.es.js/lib/ES.js"></script>
 <script src="../lib/Ruby.js"></script>
-<script src="../lib/Ruby.min.js"></script>
+<script src="../release/Ruby.min.js"></script>
 <script src="./test.js"></script>
 </body></html>
 
