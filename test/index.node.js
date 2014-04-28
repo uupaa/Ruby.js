@@ -1,9 +1,9 @@
-require("uupaa.valid.js");
-require("uupaa.task.js");
-require("uupaa.test.js");
-require("uupaa.extend.js");
-require("uupaa.es.js");
+require("../node_modules/uupaa.nodemodule.js/lib/NodeModule.js");
+require("../node_modules/uupaa.valid.js/lib/Valid.js");
+require("../node_modules/uupaa.task.js/lib/Task.js");
+require("../node_modules/uupaa.test.js/lib/Test.js");
+require("../node_modules/uupaa.extend.js/lib/Extend.js");
+require("../node_modules/uupaa.es.js/lib/ES.js");
 require("../lib/Ruby.js");
 require("../release/Ruby.min.js");
 require("./test.js");
-
