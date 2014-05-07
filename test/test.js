@@ -1,4 +1,13 @@
-new Test().add([
+var ModuleTestRuby = (function(global) {
+
+return new Test("Ruby", {
+        disable:    false,
+        browser:    true,
+        worker:     true,
+        node:       true,
+        button:     true,
+        both:       true,
+    }).add([
         testSetup,
         // --- Array ---
         testArray_times,
@@ -54,25 +63,12 @@ new Test().add([
         testString_to_i,
         testString_tr,
         testString_tr_s,
-    ]).run(function(err, test) {
-        if (1) {
-            err || test.worker(function(err, test) {
-                if (!err && typeof Ruby_ !== "undefined") {
-                    var name = Test.swap(Ruby, Ruby_);
-
-                    new Test(test).run(function(err, test) {
-                        Test.undo(name);
-                    });
-                }
-            });
-        }
-    });
+    ]).run().clone();
 
 
 function testSetup(next) {
     Ruby(2.0);
 
-    console.log("testSetup ok");
     next && next.pass();
 }
 
@@ -82,10 +78,8 @@ function testArray_times(next) {
         ];
 
     if (/false/.test(result.join())) {
-        console.log("testArray_times ng");
         next && next.miss();
     } else {
-        console.log("testArray_times ok");
         next && next.pass();
     }
 }
@@ -101,10 +95,8 @@ function testArray_at(next) {
         ];
 
     if (/false/.test(result.join())) {
-        console.log("testArray_at ng");
         next && next.miss();
     } else {
-        console.log("testArray_at ok");
         next && next.pass();
     }
 }
@@ -114,10 +106,8 @@ function testArray_assoc(next) {
     var result = ["Italy", "Roma"]
 
     if (source.assoc("Italy").join() === result.join()) {
-        console.log("testArray_assoc ok");
         next && next.pass();
     } else {
-        console.log("testArray_assoc ng");
         next && next.miss();
     }
 }
@@ -129,10 +119,8 @@ function testArray_clear(next) {
         ];
 
     if (/false/.test(result.join())) {
-        console.log("testArray_clear ng");
         next && next.miss();
     } else {
-        console.log("testArray_clear ok");
         next && next.pass();
     }
 }
@@ -147,10 +135,8 @@ function testArray_clone(next) {
         ];
 
     if (/false/.test(result.join())) {
-        console.log("testArray_clone ng");
         next && next.miss();
     } else {
-        console.log("testArray_clone ok");
         next && next.pass();
     }
 }
@@ -165,10 +151,8 @@ function testArray_compact(next) {
         ];
 
     if (/false/.test(result.join())) {
-        console.log("testArray_compact ng");
         next && next.miss();
     } else {
-        console.log("testArray_compact ok");
         next && next.pass();
     }
 }
@@ -187,10 +171,8 @@ function testArray_cycle(next) {
     result[1] = r.join() === [].concat(source, source, source).join();
 
     if (/false/.test(result.join())) {
-        console.log("testArray_cycle ng");
         next && next.miss();
     } else {
-        console.log("testArray_cycle ok");
         next && next.pass();
     }
 }
@@ -211,10 +193,8 @@ function testArray_delete(next) {
         ];
 
     if (/false/.test(result.join() + result2.join())) {
-        console.log("testArray_delete ng");
         next && next.miss();
     } else {
-        console.log("testArray_delete ok");
         next && next.pass();
     }
 }
@@ -234,10 +214,8 @@ function testArray_delete_at(next) {
         ];
 
     if (/false/.test(result.join() + result2.join())) {
-        console.log("testArray_delete_at ng");
         next && next.miss();
     } else {
-        console.log("testArray_delete_at ok");
         next && next.pass();
     }
 }
@@ -254,10 +232,8 @@ function testArray_delete_if(next) {
         ];
 
     if (/false/.test(result.join())) {
-        console.log("testArray_delete_if ng");
         next && next.miss();
     } else {
-        console.log("testArray_delete_if ok");
         next && next.pass();
     }
 }
@@ -269,10 +245,8 @@ function testArray_empty(next) {
         ];
 
     if (/false/.test(result.join())) {
-        console.log("testArray_empty ng");
         next && next.miss();
     } else {
-        console.log("testArray_empty ok");
         next && next.pass();
     }
 }
@@ -285,10 +259,8 @@ function testArray_eql(next) {
         ];
 
     if (/false/.test(result.join())) {
-        console.log("testArray_eql ng");
         next && next.miss();
     } else {
-        console.log("testArray_eql ok");
         next && next.pass();
     }
 }
@@ -301,10 +273,8 @@ function testArray_find(next) {
         };
 
     if (source.find(callback) === result) {
-        console.log("testArray_find ok");
         next && next.pass();
     } else {
-        console.log("testArray_find ng");
         next && next.miss();
     }
 }
@@ -314,10 +284,8 @@ function testArray_assoc(next) {
     var result = ["Italy", "Roma"]
 
     if (source.assoc("Italy").join() === result.join()) {
-        console.log("testArray_assoc ok");
         next && next.pass();
     } else {
-        console.log("testArray_assoc ng");
         next && next.miss();
     }
 }
@@ -327,10 +295,8 @@ function testArray_index(next) {
 
     if (source.index("banana") === 2 &&
         source.index("grape")  === undefined) {
-        console.log("testArray_index ok");
         next && next.pass();
     } else {
-        console.log("testArray_index ng");
         next && next.miss();
     }
 }
@@ -340,10 +306,8 @@ function testArray_include(next) {
 
     if (source.include("cat") === true &&
         source.include("elephant")  === false) {
-        console.log("testArray_include ok");
         next && next.pass();
     } else {
-        console.log("testArray_include ng");
         next && next.miss();
     }
 }
@@ -352,10 +316,8 @@ function testArray_first(next) {
     var source = ["apple", "orange", "banana", "kiwi", "peach"];
 
     if (source.first() === "apple") {
-        console.log("testArray_first ok");
         next && next.pass();
     } else {
-        console.log("testArray_first ng");
         next && next.miss();
     }
 }
@@ -367,10 +329,8 @@ function testArray_delete_at(next) {
     source.delete_at(-2);
 
     if (source.join() === ["apple", "banana", "peach"].join()) {
-        console.log("testArray_delete_at ok");
         next && next.pass();
     } else {
-        console.log("testArray_delete_at ng");
         next && next.miss();
     }
 }
@@ -379,10 +339,8 @@ function testArray_last(next) {
     var source = ["apple", "orange", "banana", "kiwi", "peach"];
 
     if (source.last() === "peach") {
-        console.log("testArray_last ok");
         next && next.pass();
     } else {
-        console.log("testArray_last ng");
         next && next.miss();
     }
 }
@@ -392,10 +350,8 @@ function testArray_uniq(next) {
     var result = [1, 2, 5, 3, 4];
 
     if (source.uniq().join() === result.join()) {
-        console.log("testArray_uniq ok");
         next && next.pass();
     } else {
-        console.log("testArray_uniq ng");
         next && next.miss();
     }
 }
@@ -407,10 +363,8 @@ function testString_ascii_only(next) {
     if ("あbc".ascii_only() === false &&
         "abc".ascii_only() === true) {
 
-        console.log("testString_ascii_only ok");
         next && next.pass();
     } else {
-        console.log("testString_ascii_only ng");
         next && next.miss();
     }
 }
@@ -422,10 +376,8 @@ function testString_capitalize(next) {
 
     if (source.capitalize(source) === result) {
 
-        console.log("testString_capitalize ok");
         next && next.pass();
     } else {
-        console.log("testString_capitalize ng");
         next && next.miss();
     }
 }
@@ -454,10 +406,8 @@ function testString_center(next) {
         result10 &&
         result11) {
 
-        console.log("testString_center ok");
         next && next.pass();
     } else {
-        console.log("testString_center ng");
         next && next.miss();
     }
 }
@@ -470,10 +420,8 @@ function testString_chomp(next) {
         "hello\r\n".chomp()     === "hello" &&
         "hello\r".chomp()       === "hello" &&
         "hello:".chomp(":")     === "hello") {
-        console.log("testString_chomp ok");
         next && next.pass();
     } else {
-        console.log("testString_chomp ng");
         next && next.miss();
     }
 }
@@ -487,10 +435,8 @@ function testString_chop(next) {
         "hello\r".chop()       === "hello" &&
         "hello:".chop()        === "hello" &&
         "あいう".chop()        === "あい") {
-        console.log("testString_chop ok");
         next && next.pass();
     } else {
-        console.log("testString_chop ng");
         next && next.miss();
     }
 }
@@ -500,10 +446,8 @@ function testString_codepoints(next) {
     var result = "hello わーるど".codepoints();
 
     if (result.join() === [104, 101, 108, 108, 111, 32, 12431, 12540, 12427, 12393].join()) {
-        console.log("testString_codepoints ok");
         next && next.pass();
     } else {
-        console.log("testString_codepoints ng");
         next && next.miss();
     }
 }
@@ -517,10 +461,8 @@ function testString_count(next) {
     if (result1 &&
         result2 &&
         result3) {
-        console.log("testString_count ok");
         next && next.pass();
     } else {
-        console.log("testString_count ng");
         next && next.miss();
     }
 }
@@ -532,10 +474,8 @@ function testString_delete(next) {
 
     if (result1 &&
         result2) {
-        console.log("testString_delete ok");
         next && next.pass();
     } else {
-        console.log("testString_delete ng");
         next && next.miss();
     }
 }
@@ -549,10 +489,8 @@ function testString_each_char(next) {
     });
 
     if (result.join("") === "hello世界") {
-        console.log("testString_each_char ok");
         next && next.pass();
     } else {
-        console.log("testString_each_char ng");
         next && next.miss();
     }
 }
@@ -566,10 +504,8 @@ function testString_each_codepoint(next) {
     });
 
     if (result.join() === [115, 116, 114].join()) {
-        console.log("testString_each_codepoint ok");
         next && next.pass();
     } else {
-        console.log("testString_each_codepoint ng");
         next && next.miss();
     }
 }
@@ -586,10 +522,8 @@ function testString_each_line(next) {
     if (result1.join() === ["aa", "bb", "cc"].join() &&
         result2.join() === ["aa", "bb", "cc"].join()) {
 
-        console.log("testString_each_line ok");
         next && next.pass();
     } else {
-        console.log("testString_each_line ng");
         next && next.miss();
     }
 }
@@ -604,10 +538,8 @@ function testString_end_with(next) {
         result2 &&
         result3) {
 
-        console.log("testString_end_with ok");
         next && next.pass();
     } else {
-        console.log("testString_end_with ng");
         next && next.miss();
     }
 }
@@ -620,10 +552,8 @@ function testString_eql(next) {
     if (result1 &&
         result2) {
 
-        console.log("testString_eql ok");
         next && next.pass();
     } else {
-        console.log("testString_eql ng");
         next && next.miss();
     }
 }
@@ -646,10 +576,8 @@ function testString_gsub(next) {
         result3 &&
         result4) {
 
-        console.log("testString_gsub ok");
         next && next.pass();
     } else {
-        console.log("testString_gsub ng");
         next && next.miss();
     }
 }
@@ -674,10 +602,8 @@ function testString_hex(next) {
         result7 &&
         result8) {
 
-        console.log("testString_hex ok");
         next && next.pass();
     } else {
-        console.log("testString_hex ng");
         next && next.miss();
     }
 }
@@ -688,10 +614,8 @@ function testString_include(next) {
 
     if (result1) {
 
-        console.log("testString_include ok");
         next && next.pass();
     } else {
-        console.log("testString_include ng");
         next && next.miss();
     }
 }
@@ -704,10 +628,8 @@ function testString_insert(next) {
     if (result1 &&
         result2) {
 
-        console.log("testString_insert ok");
         next && next.pass();
     } else {
-        console.log("testString_insert ng");
         next && next.miss();
     }
 }
@@ -718,10 +640,8 @@ function testString_size(next) {
 
     if (result1) {
 
-        console.log("testString_size ok");
         next && next.pass();
     } else {
-        console.log("testString_size ng");
         next && next.miss();
     }
 }
@@ -747,10 +667,8 @@ function testString_ljust(next) {
         result6 &&
         result7 &&
         result8) {
-        console.log("testString_ljust ok");
         next && next.pass();
     } else {
-        console.log("testString_ljust ng");
         next && next.miss();
     }
 }
@@ -763,10 +681,8 @@ function testString_lstrip(next) {
     if (result1 &&
         result2 &&
         result3) {
-        console.log("testString_lstrip ok");
         next && next.pass();
     } else {
-        console.log("testString_lstrip ng");
         next && next.miss();
     }
 }
@@ -775,10 +691,8 @@ function testString_ord(next) {
     var result1 =  "a".ord() === 97;
 
     if (result1) {
-        console.log("testString_ord ok");
         next && next.pass();
     } else {
-        console.log("testString_ord ng");
         next && next.miss();
     }
 }
@@ -791,10 +705,8 @@ function testString_partition(next) {
     if (result1 &&
         result2 &&
         result3) {
-        console.log("testString_partition ok");
         next && next.pass();
     } else {
-        console.log("testString_partition ng");
         next && next.miss();
     }
 }
@@ -805,10 +717,8 @@ function testString_reverse(next) {
 
     if (result1 &&
         result2) {
-        console.log("testString_reverse ok");
         next && next.pass();
     } else {
-        console.log("testString_reverse ng");
         next && next.miss();
     }
 }
@@ -832,10 +742,8 @@ function testString_rjust(next) {
         result7 &&
         result8) {
 
-        console.log("testString_rjust ok");
         next && next.pass();
     } else {
-        console.log("testString_rjust ng");
         next && next.miss();
     }
 }
@@ -848,10 +756,8 @@ function testString_rpartition(next) {
     if (result1 &&
         result2 &&
         result3) {
-        console.log("testString_rpartition ok");
         next && next.pass();
     } else {
-        console.log("testString_rpartition ng");
         next && next.miss();
     }
 }
@@ -867,10 +773,8 @@ function testString_rstrip(next) {
         result2 &&
         result3 &&
         result4) {
-        console.log("testString_rstrip ok");
         next && next.pass();
     } else {
-        console.log("testString_rstrip ng");
         next && next.miss();
     }
 }
@@ -916,10 +820,8 @@ function testString_scan(next) {
         result11.join() === result12.join() &&
         result13.join() === result14.join()) {
 
-        console.log("testString_scan ok");
         next && next.pass();
     } else {
-        console.log("testString_scan ng");
         next && next.miss();
     }
 }
@@ -934,10 +836,8 @@ function testString_squeeze(next) {
         result2 &&
         result3 &&
         result4) {
-        console.log("testString_squeeze ok");
         next && next.pass();
     } else {
-        console.log("testString_squeeze ng");
         next && next.miss();
     }
 }
@@ -952,13 +852,12 @@ function testString_start_with(next) {
         result2 &&
         result3) {
 
-        console.log("testString_start_with ok");
         next && next.pass();
     } else {
-        console.log("testString_start_with ng");
         next && next.miss();
     }
 }
+
 function testString_strip(next) {
     // http://docs.ruby-lang.org/ja/2.0.0/class/String.html
     var result1 = "  abc  \r\n".strip()    === "abc"
@@ -975,10 +874,8 @@ function testString_strip(next) {
         result5 &&
         result6) {
 
-        console.log("testString_strip ok");
         next && next.pass();
     } else {
-        console.log("testString_strip ng");
         next && next.miss();
     }
 }
@@ -989,10 +886,8 @@ function testString_swapcase(next) {
 
     if (source.swapcase(source) === result) {
 
-        console.log("testString_swapcase ok");
         next && next.pass();
     } else {
-        console.log("testString_swapcase ng");
         next && next.miss();
     }
 }
@@ -1014,10 +909,8 @@ function testString_to_f(next) {
         ];
 
     if (/false/.test(result.join())) {
-        console.log("testString_to_f ng");
         next && next.miss();
     } else {
-        console.log("testString_to_f ok");
         next && next.pass();
     }
 }
@@ -1045,10 +938,8 @@ function testString_to_i(next) {
         ];
 
     if (/false/.test(result.join())) {
-        console.log("testString_to_i ng");
         next && next.miss();
     } else {
-        console.log("testString_to_i ok");
         next && next.pass();
     }
 }
@@ -1061,10 +952,8 @@ function testString_tr(next) {
         ];
 
     if (/false/.test(result.join())) {
-        console.log("testString_tr ng");
         next && next.miss();
     } else {
-        console.log("testString_tr ok");
         next && next.pass();
     }
 }
@@ -1078,14 +967,12 @@ function testString_tr_s(next) {
         ];
 
     if (/false/.test(result.join())) {
-        console.log("testString_tr_s ng");
         next && next.miss();
     } else {
-        console.log("testString_tr_s ok");
         next && next.pass();
     }
 }
 
-
+})((this || 0).self || global);
 
 

@@ -1,6 +1,6 @@
 {
   "name":           "uupaa.ruby.js",
-  "version":        "0.0.6",
+  "version":        "0.0.7",
   "description":    "Extend Ruby functions.",
   "url":            "https://github.com/uupaa/Ruby.js",
   "keywords":       ["Ruby", "String", "Array", "Number", "util", "uupaa", "WebModule"],
