@@ -6,12 +6,25 @@
 onmessage = function(event) {
     self.MESSAGE = event.data;
 
+    importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.reflection.js/lib/Reflection.js");
     importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.console.js/lib/Console.js");
+    importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.help.js/lib/Help.js");
     importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.valid.js/lib/Valid.js");
     importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.task.js/lib/Task.js");
     importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.test.js/lib/Test.js");
     importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.extend.js/lib/Extend.js");
     importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.es.js/lib/ES.js");
+    importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.es.js/lib/ES5_Array.js");
+    importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.es.js/lib/ES5_Date.js");
+    importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.es.js/lib/ES5_Function.js");
+    importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.es.js/lib/ES5_JSON.js");
+    importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.es.js/lib/ES5_Object.js");
+    importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.es.js/lib/ES5_String.js");
+    importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.es.js/lib/ES6_Array.js");
+    importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.es.js/lib/ES6_Number.js");
+    importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.es.js/lib/ES6_Object.js");
+    importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.es.js/lib/ES6_String.js");
+    importScripts(MESSAGE.BASE_DIR + "../node_modules/uupaa.es.js/lib/ES6_WeakMap.js");
     importScripts(MESSAGE.BASE_DIR + "../lib/Ruby.js");
     importScripts(MESSAGE.BASE_DIR + "../release/Ruby.min.js");
     importScripts(MESSAGE.BASE_DIR + "./test.js");
@@ -20,12 +33,25 @@ onmessage = function(event) {
 };
 </script>
 
-<script src="../node_modules/uupaa.valid.js/lib/Valid.js"></script>
+<script src="../node_modules/uupaa.reflection.js/lib/Reflection.js"></script>
+<script src="../node_modules/uupaa.console.js/lib/Console.js"></script>
 <script src="../node_modules/uupaa.help.js/lib/Help.js"></script>
+<script src="../node_modules/uupaa.valid.js/lib/Valid.js"></script>
 <script src="../node_modules/uupaa.task.js/lib/Task.js"></script>
 <script src="../node_modules/uupaa.test.js/lib/Test.js"></script>
 <script src="../node_modules/uupaa.extend.js/lib/Extend.js"></script>
 <script src="../node_modules/uupaa.es.js/lib/ES.js"></script>
+<script src="../node_modules/uupaa.es.js/lib/ES5_Array.js"></script>
+<script src="../node_modules/uupaa.es.js/lib/ES5_Date.js"></script>
+<script src="../node_modules/uupaa.es.js/lib/ES5_Function.js"></script>
+<script src="../node_modules/uupaa.es.js/lib/ES5_JSON.js"></script>
+<script src="../node_modules/uupaa.es.js/lib/ES5_Object.js"></script>
+<script src="../node_modules/uupaa.es.js/lib/ES5_String.js"></script>
+<script src="../node_modules/uupaa.es.js/lib/ES6_Array.js"></script>
+<script src="../node_modules/uupaa.es.js/lib/ES6_Number.js"></script>
+<script src="../node_modules/uupaa.es.js/lib/ES6_Object.js"></script>
+<script src="../node_modules/uupaa.es.js/lib/ES6_String.js"></script>
+<script src="../node_modules/uupaa.es.js/lib/ES6_WeakMap.js"></script>
 <script src="../lib/Ruby.js"></script>
 <script src="../release/Ruby.min.js"></script>
 <script src="./test.js"></script>
