@@ -12,52 +12,52 @@ __report = {
       },
       "complexity": {
         "aggregate": {
-          "line": 28,
+          "line": 24,
           "complexity": {
             "sloc": {
-              "physical": 1125,
-              "logical": 606
+              "physical": 1060,
+              "logical": 603
             },
-            "cyclomatic": 134,
+            "cyclomatic": 133,
             "halstead": {
               "operators": {
                 "distinct": 42,
-                "total": 1544,
+                "total": 1505,
                 "identifiers": [
                   "__stripped__"
                 ]
               },
               "operands": {
-                "distinct": 368,
-                "total": 1828,
+                "distinct": 355,
+                "total": 1838,
                 "identifiers": [
                   "__stripped__"
                 ]
               },
-              "length": 3372,
-              "vocabulary": 410,
-              "difficulty": 104.31521739130434,
-              "volume": 29267.206895532367,
-              "effort": 3053015.0497437404,
-              "bugs": 9.755735631844122,
-              "time": 169611.94720798556
+              "length": 3343,
+              "vocabulary": 397,
+              "difficulty": 108.72676056338028,
+              "volume": 28860.10294404891,
+              "effort": 3137865.5026321122,
+              "bugs": 9.62003431468297,
+              "time": 174325.86125733957
             },
-            "params": 74
+            "params": 77
           }
         },
         "module": "lib/Ruby.js",
-        "maintainability": 64.8973343369675
+        "maintainability": 65.14833192459254
       }
     }
   ],
   "summary": {
     "total": {
-      "sloc": 1125,
-      "maintainability": 64.8973343369675
+      "sloc": 1060,
+      "maintainability": 65.14833192459254
     },
     "average": {
-      "sloc": 1125,
-      "maintainability": "64.90"
+      "sloc": 1060,
+      "maintainability": "65.15"
     }
   }
 }

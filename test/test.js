@@ -66,25 +66,25 @@ return new Test("Ruby", {
     ]).run().clone();
 
 
-function testSetup(next) {
+function testSetup(test, pass, miss) {
     Ruby(2.0);
 
-    next && next.pass();
+    test.done(pass());
 }
 
-function testArray_times(next) {
+function testArray_times(test, pass, miss) {
     var result = [
             [1, 2, 3].times(3).join() === [1, 2, 3, 1, 2, 3, 1, 2, 3].join(),
         ];
 
     if (/false/.test(result.join())) {
-        next && next.miss();
+        test.done(miss());
     } else {
-        next && next.pass();
+        test.done(pass());
     }
 }
 
-function testArray_at(next) {
+function testArray_at(test, pass, miss) {
     var source = [ "a", "b", "c", "d", "e" ];
     var result = [
                 source.at(0)  === "a",
@@ -95,37 +95,37 @@ function testArray_at(next) {
         ];
 
     if (/false/.test(result.join())) {
-        next && next.miss();
+        test.done(miss());
     } else {
-        next && next.pass();
+        test.done(pass());
     }
 }
 
-function testArray_assoc(next) {
+function testArray_assoc(test, pass, miss) {
     var source = [["Japan", "Tokyo"], ["Italy", "Roma"], ["China", "Beijing"]]
     var result = ["Italy", "Roma"]
 
     if (source.assoc("Italy").join() === result.join()) {
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testArray_clear(next) {
+function testArray_clear(test, pass, miss) {
     var source = [ 1, 2 ]
     var result = [
                 source.clear().join() === [].join(),
         ];
 
     if (/false/.test(result.join())) {
-        next && next.miss();
+        test.done(miss());
     } else {
-        next && next.pass();
+        test.done(pass());
     }
 }
 
-function testArray_clone(next) {
+function testArray_clone(test, pass, miss) {
     var func   = function hoge(){};
     var ary    = [1,2,3];
     var obj    = {a:1,b:2};
@@ -135,13 +135,13 @@ function testArray_clone(next) {
         ];
 
     if (/false/.test(result.join())) {
-        next && next.miss();
+        test.done(miss());
     } else {
-        next && next.pass();
+        test.done(pass());
     }
 }
 
-function testArray_compact(next) {
+function testArray_compact(test, pass, miss) {
     var source = [ 1, 2, 3, null, undefined, NaN ];
     delete source[1];
     delete source[2];
@@ -151,13 +151,13 @@ function testArray_compact(next) {
         ];
 
     if (/false/.test(result.join())) {
-        next && next.miss();
+        test.done(miss());
     } else {
-        next && next.pass();
+        test.done(pass());
     }
 }
 
-function testArray_cycle(next) {
+function testArray_cycle(test, pass, miss) {
     var r = [];
     var source = [ 1, 2, 3 ];
     var result = [
@@ -171,14 +171,14 @@ function testArray_cycle(next) {
     result[1] = r.join() === [].concat(source, source, source).join();
 
     if (/false/.test(result.join())) {
-        next && next.miss();
+        test.done(miss());
     } else {
-        next && next.pass();
+        test.done(pass());
     }
 }
 
 /*
-function testArray_delete(next) {
+function testArray_delete(test, pass, miss) {
     var source = [1, 2, 3, 2, 1];
     var result = [
             source.delete(2) === 2,
@@ -193,14 +193,14 @@ function testArray_delete(next) {
         ];
 
     if (/false/.test(result.join() + result2.join())) {
-        next && next.miss();
+        test.done(miss());
     } else {
-        next && next.pass();
+        test.done(pass());
     }
 }
  */
 
-function testArray_delete_at(next) {
+function testArray_delete_at(test, pass, miss) {
     var source = ["apple", "orange", "banana", "kiwi", "peach"];
     source.delete_at(1);
     source.delete_at(-2);
@@ -214,13 +214,13 @@ function testArray_delete_at(next) {
         ];
 
     if (/false/.test(result.join() + result2.join())) {
-        next && next.miss();
+        test.done(miss());
     } else {
-        next && next.pass();
+        test.done(pass());
     }
 }
 
-function testArray_delete_if(next) {
+function testArray_delete_if(test, pass, miss) {
     var source = [0, 1, 2, 3, 4, 5];
 
     source.delete_if(function(x) {
@@ -232,26 +232,26 @@ function testArray_delete_if(next) {
         ];
 
     if (/false/.test(result.join())) {
-        next && next.miss();
+        test.done(miss());
     } else {
-        next && next.pass();
+        test.done(pass());
     }
 }
 
-function testArray_empty(next) {
+function testArray_empty(test, pass, miss) {
     var result = [
             [].empty()      === true,
             [1,2,3].empty() === false,
         ];
 
     if (/false/.test(result.join())) {
-        next && next.miss();
+        test.done(miss());
     } else {
-        next && next.pass();
+        test.done(pass());
     }
 }
 
-function testArray_eql(next) {
+function testArray_eql(test, pass, miss) {
     var result = [
             ["a", "b", "c"].eql( ["a", "b", "c"]) === true,
             ["a", "b", "c"].eql( ["a", "c", "b"]) === false,
@@ -259,13 +259,13 @@ function testArray_eql(next) {
         ];
 
     if (/false/.test(result.join())) {
-        next && next.miss();
+        test.done(miss());
     } else {
-        next && next.pass();
+        test.done(pass());
     }
 }
 
-function testArray_find(next) {
+function testArray_find(test, pass, miss) {
     var source = [38, 74, 56, 48, 87, 68, 81, 49];
     var result = 56;
     var callback = function(value, index, array) {
@@ -273,116 +273,116 @@ function testArray_find(next) {
         };
 
     if (source.find(callback) === result) {
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testArray_assoc(next) {
+function testArray_assoc(test, pass, miss) {
     var source = [["Japan", "Tokyo"], ["Italy", "Roma"], ["China", "Beijing"]]
     var result = ["Italy", "Roma"]
 
     if (source.assoc("Italy").join() === result.join()) {
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testArray_index(next) {
+function testArray_index(test, pass, miss) {
     var source = ["apple", "orange", "banana", "kiwi"];
 
     if (source.index("banana") === 2 &&
         source.index("grape")  === undefined) {
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testArray_include(next) {
+function testArray_include(test, pass, miss) {
     var source = ["dog", "cat", "mouse"];
 
     if (source.include("cat") === true &&
         source.include("elephant")  === false) {
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testArray_first(next) {
+function testArray_first(test, pass, miss) {
     var source = ["apple", "orange", "banana", "kiwi", "peach"];
 
     if (source.first() === "apple") {
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testArray_delete_at(next) {
+function testArray_delete_at(test, pass, miss) {
     var source = ["apple", "orange", "banana", "kiwi", "peach"];
 
     source.delete_at(1);
     source.delete_at(-2);
 
     if (source.join() === ["apple", "banana", "peach"].join()) {
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testArray_last(next) {
+function testArray_last(test, pass, miss) {
     var source = ["apple", "orange", "banana", "kiwi", "peach"];
 
     if (source.last() === "peach") {
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testArray_uniq(next) {
+function testArray_uniq(test, pass, miss) {
     var source = [1, 2, 5, 5, 1, 3, 1, 2, 4, 3];
     var result = [1, 2, 5, 3, 4];
 
     if (source.uniq().join() === result.join()) {
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
 
-function testString_ascii_only(next) {
+function testString_ascii_only(test, pass, miss) {
     // http://docs.ruby-lang.org/ja/2.0.0/class/String.html
 
     if ("あbc".ascii_only() === false &&
         "abc".ascii_only() === true) {
 
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testString_capitalize(next) {
+function testString_capitalize(test, pass, miss) {
     // http://docs.ruby-lang.org/ja/2.0.0/class/String.html
     var source = "heLLO, World";
     var result = "Hello, world";
 
     if (source.capitalize(source) === result) {
 
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testString_center(next) {
+function testString_center(test, pass, miss) {
     // http://docs.ruby-lang.org/ja/2.0.0/class/String.html
     var result1 = "foo".center(10) === "   foo    ";
     var result2 = "foo".center(9)  === "   foo   ";
@@ -406,13 +406,13 @@ function testString_center(next) {
         result10 &&
         result11) {
 
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testString_chomp(next) {
+function testString_chomp(test, pass, miss) {
     // http://docs.ruby-lang.org/ja/2.0.0/class/String.html
     var source = "hello";
 
@@ -420,13 +420,13 @@ function testString_chomp(next) {
         "hello\r\n".chomp()     === "hello" &&
         "hello\r".chomp()       === "hello" &&
         "hello:".chomp(":")     === "hello") {
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testString_chop(next) {
+function testString_chop(test, pass, miss) {
     // http://docs.ruby-lang.org/ja/2.0.0/class/String.html
     var source = "hello";
 
@@ -435,24 +435,24 @@ function testString_chop(next) {
         "hello\r".chop()       === "hello" &&
         "hello:".chop()        === "hello" &&
         "あいう".chop()        === "あい") {
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testString_codepoints(next) {
+function testString_codepoints(test, pass, miss) {
     // http://docs.ruby-lang.org/ja/2.0.0/class/String.html
     var result = "hello わーるど".codepoints();
 
     if (result.join() === [104, 101, 108, 108, 111, 32, 12431, 12540, 12427, 12393].join()) {
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testString_count(next) {
+function testString_count(test, pass, miss) {
     // http://docs.ruby-lang.org/ja/2.0.0/class/String.html
     var result1 = 'abcdefg'.count('c') === 1;
     var result2 = '123456789'.count('2378') === 4;
@@ -461,26 +461,26 @@ function testString_count(next) {
     if (result1 &&
         result2 &&
         result3) {
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testString_delete(next) {
+function testString_delete(test, pass, miss) {
     // http://docs.ruby-lang.org/ja/2.0.0/class/String.html
     var result1 = "123456789"["delete"]("2378") === "14569";
     var result2 = "123456789"["delete"]("2-8", "^4-6") === "14569";
 
     if (result1 &&
         result2) {
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testString_each_char(next) {
+function testString_each_char(test, pass, miss) {
     // http://docs.ruby-lang.org/ja/2.0.0/class/String.html
     var result = [];
 
@@ -489,13 +489,13 @@ function testString_each_char(next) {
     });
 
     if (result.join("") === "hello世界") {
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testString_each_codepoint(next) {
+function testString_each_codepoint(test, pass, miss) {
     // http://docs.ruby-lang.org/ja/2.0.0/class/String.html
     var result = [];
 
@@ -504,13 +504,13 @@ function testString_each_codepoint(next) {
     });
 
     if (result.join() === [115, 116, 114].join()) {
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testString_each_line(next) {
+function testString_each_line(test, pass, miss) {
     // http://docs.ruby-lang.org/ja/2.0.0/class/String.html
     var result1 = [];
 
@@ -522,13 +522,13 @@ function testString_each_line(next) {
     if (result1.join() === ["aa", "bb", "cc"].join() &&
         result2.join() === ["aa", "bb", "cc"].join()) {
 
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testString_end_with(next) {
+function testString_end_with(test, pass, miss) {
     // http://docs.ruby-lang.org/ja/2.0.0/class/String.html
     var result1 = "string".end_with("ing") === true;
     var result2 = "string".end_with("str") === false;
@@ -538,13 +538,13 @@ function testString_end_with(next) {
         result2 &&
         result3) {
 
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testString_eql(next) {
+function testString_eql(test, pass, miss) {
     // http://docs.ruby-lang.org/ja/2.0.0/class/String.html
     var result1 = "string".eql("string") === true;
     var result2 = "string".eql("STRING") === false;
@@ -552,13 +552,13 @@ function testString_eql(next) {
     if (result1 &&
         result2) {
 
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testString_gsub(next) {
+function testString_gsub(test, pass, miss) {
     // http://docs.ruby-lang.org/ja/2.0.0/class/String.html
     var result1 = 'abcdefg'.gsub(/def/, '!!') === "abc!!g";
     var result2 = 'abcabc'.gsub(/(b)/, '<<\\1>>') === "a<<b>>ca<<b>>c";
@@ -576,13 +576,13 @@ function testString_gsub(next) {
         result3 &&
         result4) {
 
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testString_hex(next) {
+function testString_hex(test, pass, miss) {
     // http://docs.ruby-lang.org/ja/2.0.0/class/String.html
     var result1 = "10".hex() === 16;
     var result2 = "ff".hex() === 255;
@@ -602,25 +602,25 @@ function testString_hex(next) {
         result7 &&
         result8) {
 
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testString_include(next) {
+function testString_include(test, pass, miss) {
     // http://docs.ruby-lang.org/ja/2.0.0/class/String.html
     var result1 = "abcdef".include("def");
 
     if (result1) {
 
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testString_insert(next) {
+function testString_insert(test, pass, miss) {
     // http://docs.ruby-lang.org/ja/2.0.0/class/String.html
     var result1 = "foobaz".insert(3, "bar") === "foobarbaz";
     var result2 = "".insert(3, "bar") === "bar";
@@ -628,28 +628,28 @@ function testString_insert(next) {
     if (result1 &&
         result2) {
 
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testString_size(next) {
+function testString_size(test, pass, miss) {
     // http://docs.ruby-lang.org/ja/2.0.0/class/String.html
     var result1 = "foobaz".size() === 6;
 
     if (result1) {
 
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
 
 
 
-function testString_ljust(next) {
+function testString_ljust(test, pass, miss) {
     var result1 = "foo".ljust(10) === "foo       ";
     var result2 = "foo".ljust(9)  === "foo      ";
     var result3 = "foo".ljust(8)  === "foo     ";
@@ -667,13 +667,13 @@ function testString_ljust(next) {
         result6 &&
         result7 &&
         result8) {
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testString_lstrip(next) {
+function testString_lstrip(test, pass, miss) {
     var result1 = "  abc\n".lstrip()  === "abc\n";
     var result2 = "\t abc\n".lstrip() === "abc\n";
     var result3 = "abc\n".lstrip()    === "abc\n";
@@ -681,23 +681,23 @@ function testString_lstrip(next) {
     if (result1 &&
         result2 &&
         result3) {
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testString_ord(next) {
+function testString_ord(test, pass, miss) {
     var result1 =  "a".ord() === 97;
 
     if (result1) {
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testString_partition(next) {
+function testString_partition(test, pass, miss) {
     var result1 = "axaxa".partition("x").join() === ["a", "x", "axa"].join()
     var result2 = "aaaaa".partition("x").join() === ["aaaaa", "", ""].join()
     var result3 = "aaaaa".partition("").join()  === ["", "", "aaaaa"].join()
@@ -705,25 +705,25 @@ function testString_partition(next) {
     if (result1 &&
         result2 &&
         result3) {
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testString_reverse(next) {
+function testString_reverse(test, pass, miss) {
     var result1 = "foobar".reverse() === "raboof";
     var result2 =       "".reverse() === "";
 
     if (result1 &&
         result2) {
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testString_rjust(next) {
+function testString_rjust(test, pass, miss) {
     var result1 =   "foo".rjust(10)       === "       foo";
     var result2 =   "foo".rjust(9)        === "      foo";
     var result3 =   "foo".rjust(8)        === "     foo";
@@ -742,13 +742,13 @@ function testString_rjust(next) {
         result7 &&
         result8) {
 
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testString_rpartition(next) {
+function testString_rpartition(test, pass, miss) {
     var result1 = "axaxa".rpartition("x").join() === ["axa", "x", "a"].join();
     var result2 = "aaaaa".rpartition("x").join() === ["", "", "aaaaa"].join();
     var result3 = "aaaaa".rpartition("").join()  === ["aaaaa", "", ""].join();
@@ -756,13 +756,13 @@ function testString_rpartition(next) {
     if (result1 &&
         result2 &&
         result3) {
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testString_rstrip(next) {
+function testString_rstrip(test, pass, miss) {
     var result1 = "  abc\n".rstrip()        === "  abc";
     var result2 = "  abc \t\r\n\0".rstrip() === "  abc";
     var result3 = "  abc".rstrip()          === "  abc";
@@ -773,13 +773,13 @@ function testString_rstrip(next) {
         result2 &&
         result3 &&
         result4) {
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testString_scan(next) {
+function testString_scan(test, pass, miss) {
     var result1 = "foobar".scan(/../).join()               === ["fo", "ob", "ar"].join()
     var result2 = "foobar".scan("o").join()                === ["o", "o"].join()
     var result3 = "foobarbazfoobarbaz".scan(/ba./).join()  === ["bar", "baz", "bar", "baz"].join()
@@ -820,13 +820,13 @@ function testString_scan(next) {
         result11.join() === result12.join() &&
         result13.join() === result14.join()) {
 
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testString_squeeze(next) {
+function testString_squeeze(test, pass, miss) {
     var result1 = "112233445566778899".squeeze()              === "123456789";
     var result2 = "112233445566778899".squeeze("2-8")         ===  "11234567899";
     var result3 = "112233445566778899".squeeze("2378")        === "11234455667899";
@@ -836,13 +836,13 @@ function testString_squeeze(next) {
         result2 &&
         result3 &&
         result4) {
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testString_start_with(next) {
+function testString_start_with(test, pass, miss) {
     // http://docs.ruby-lang.org/ja/2.0.0/class/String.html
     var result1 = "string".start_with("str") === true;
     var result2 = "string".start_with("ing") === false;
@@ -852,13 +852,13 @@ function testString_start_with(next) {
         result2 &&
         result3) {
 
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testString_strip(next) {
+function testString_strip(test, pass, miss) {
     // http://docs.ruby-lang.org/ja/2.0.0/class/String.html
     var result1 = "  abc  \r\n".strip()    === "abc"
     var result2 = "abc\n".strip()          === "abc"
@@ -874,25 +874,25 @@ function testString_strip(next) {
         result5 &&
         result6) {
 
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testString_swapcase(next) {
+function testString_swapcase(test, pass, miss) {
     var source = "heLLo, wORld";
     var result = "HEllO, WorLD";
 
     if (source.swapcase(source) === result) {
 
-        next && next.pass();
+        test.done(pass());
     } else {
-        next && next.miss();
+        test.done(miss());
     }
 }
 
-function testString_to_f(next) {
+function testString_to_f(test, pass, miss) {
     var result = [
             "10".to_f()    === 10.0,
             "10e2".to_f()  === 1000.0,
@@ -909,13 +909,13 @@ function testString_to_f(next) {
         ];
 
     if (/false/.test(result.join())) {
-        next && next.miss();
+        test.done(miss());
     } else {
-        next && next.pass();
+        test.done(pass());
     }
 }
 
-function testString_to_i(next) {
+function testString_to_i(test, pass, miss) {
     var result = [
             " 10".to_i()  === 10,
             "+10".to_i()  === 10,
@@ -938,13 +938,13 @@ function testString_to_i(next) {
         ];
 
     if (/false/.test(result.join())) {
-        next && next.miss();
+        test.done(miss());
     } else {
-        next && next.pass();
+        test.done(pass());
     }
 }
 
-function testString_tr(next) {
+function testString_tr(test, pass, miss) {
     var result = [
             "foo".tr("f", "X")      === "Xoo",
             "foo".tr('a-z', 'A-Z')  === "FOO",
@@ -952,13 +952,13 @@ function testString_tr(next) {
         ];
 
     if (/false/.test(result.join())) {
-        next && next.miss();
+        test.done(miss());
     } else {
-        next && next.pass();
+        test.done(pass());
     }
 }
 
-function testString_tr_s(next) {
+function testString_tr_s(test, pass, miss) {
     var result = [
             "gooooogle".tr_s("o", "X")       === "gXgle",
             "gooooogle".tr_s("a-z", "A-Z")   === "GOGLE",
@@ -967,9 +967,9 @@ function testString_tr_s(next) {
         ];
 
     if (/false/.test(result.join())) {
-        next && next.miss();
+        test.done(miss());
     } else {
-        next && next.pass();
+        test.done(pass());
     }
 }
 
