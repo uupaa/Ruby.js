@@ -1,4 +1,3 @@
-require("../node_modules/uupaa.extend.js/lib/Extend.js");
 require("../../WebModule/lib/Reflection.js");
 require("../../WebModule/lib/Console.js");
 require("../../WebModule/lib/Valid.js");
